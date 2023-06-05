@@ -163,8 +163,9 @@ public class MangaStoreGUI extends JFrame {
         // Set Border Layout
         setLayout(new BorderLayout());
         // String containing JLabel text
-        String labelText = "<html><b COLOR=RED> Welcome</b>" + "<b><i COLOR=#006363> To </i></b>" +
-                "<b><u COLOR=#BF3030>Andrew's</u><u COLOR=#8170D8>manga</u><u COLOR=#00CC00></u><u COLOR=BLUE>Store</u></b>";
+        String labelText = "<html><b><font color='gray'>Andrew's</font></b>" +
+                "<b><font color='#00CCFF'> Manga Paradise</font></b>";
+
 
         // Create JLabel
         JLabel banner = new JLabel(labelText);
@@ -181,8 +182,8 @@ public class MangaStoreGUI extends JFrame {
         // Set Border Layout
         searchPanel.setLayout(new GridLayout(1, 3, 5, 5));
         // Create buttons
-         searchButton = new JButton("Search");
-         showAllButton = new JButton("Show All");
+        searchButton = new JButton("Search");
+        showAllButton = new JButton("Show All");
         // Create text file field
         searchField = new JTextField(15);
         // Add listeners
