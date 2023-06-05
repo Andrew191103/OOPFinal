@@ -58,7 +58,7 @@ public class MangaStoreGUI extends JFrame {
     // MangaStoreGUI - builds a GUI with multiple panels
     // Title of GUI
     public MangaStoreGUI() throws IOException {
-        setTitle("Manga Store Shopping Cart");
+        setTitle("Your Ultimate Shopping Cart for Manga");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
