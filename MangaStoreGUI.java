@@ -107,7 +107,7 @@ public class MangaStoreGUI extends JFrame {
         scrollPane1 = new JScrollPane(mangaList);
         scrollPane1.setPreferredSize(new Dimension(175, 50));
         // Jlabel/panel title
-        panelTitle = new JLabel("Available Manga");
+        panelTitle = new JLabel("Browse Manga Collection");
         // Add Jlabel and scroll to panel
         mangaPanel.add(panelTitle, BorderLayout.NORTH);
         mangaPanel.add(scrollPane1);
