@@ -1,2 +1,2 @@
 # OOPFinal
-Andrew Sebastian Sibuea 2602169711
+Andrew Sebastian Sibuea - 2602169711
