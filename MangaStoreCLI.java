@@ -1,4 +1,4 @@
-//MangeStoreCLI.java
+// MangaStoreCLI.java
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +55,9 @@ public class MangaStoreCLI {
     }
 
     public void initializeMangaData() {
-        String[] titles = MangaInfo.getMangaTitles();
-        double[] prices = MangaInfo.getMangaPrices();
+        MangaInfo mangaInfo = new MangaInfo();
+        String[] titles = mangaInfo.getMangaTitles();
+        double[] prices = mangaInfo.getMangaPrices();
 
         for (int i = 0; i < titles.length; i++) {
             mangaTitles.add(titles[i]);
