@@ -1,6 +1,6 @@
-public class MangaInfo extends Manga {
+public class MangaInfo extends Manga { //The MangaInfo class extends the Manga class.
     @Override
-    protected String[] getMangaTitles() {
+    protected String[] getMangaTitles() { //The getMangaTitles() method is overridden to provide an array of manga titles.
         String[] mangaTitles = {
                 "Hajime no Ippo",
                 "Slam Dunk",
@@ -48,7 +48,7 @@ public class MangaInfo extends Manga {
     }
 
     @Override
-    protected double[] getMangaPrices() {
+    protected double[] getMangaPrices() { //The getMangaPrices() method is overridden to provide an array of manga prices.
         double[] mangaPrices = {
                 10.99,   // Hajime no Ippo
                 8.99,    // Slam Dunk
@@ -89,8 +89,9 @@ public class MangaInfo extends Manga {
                 11.49,   // Hunter x Hunter
                 7.49,    // Toradora!
                 10.49    // Kaguya-sama: Love is War
+                //Each element in the mangaPrices array corresponds to the price of the respective manga title in the mangaTitles array.
 
         };
-        return mangaPrices;
+        return mangaPrices; //This class is responsible for retrieving the manga titles and prices to populate the GUI and perform calculations within the application.
     }
 }
