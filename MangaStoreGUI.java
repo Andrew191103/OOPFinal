@@ -80,6 +80,10 @@ public class MangaStoreGUI extends JFrame {
         // Set visibility
         setVisible(true);
         pack();
+        //The code builds different panels by calling corresponding methods (buildMangaPanel(), buildButtonsPanel(), etc.).
+        //Each panel is added to the GUI frame using the add method and specifying the desired region using BorderLayout.
+        //The visibility of the GUI frame is set to true using setVisible(true).
+        //The components within the frame are packed together using pack().
     }
 
     public void buildMangaPanel() throws IOException {
@@ -115,10 +119,10 @@ public class MangaStoreGUI extends JFrame {
 
     // Build Buttons Panel (add, remove, checkout buttons)
     public void buildButtonsPanel() {
-        // Create panel to hold list of books
+        //It creates a JPanel named buttonsPanel that will hold the buttons.
         buttonsPanel = new JPanel();
         // Set Panel layout
-        buttonsPanel.setLayout(new GridLayout(3, 1));
+        buttonsPanel.setLayout(new GridLayout(3, 1)); // The layout of buttonsPanel is set to GridLayout with 3 rows and 1 column, which arranges components in a grid.
         // Create Buttons
         addSelected = new JButton("Add to Cart");
         removeSelected = new JButton("Remove from Cart");
@@ -133,6 +137,7 @@ public class MangaStoreGUI extends JFrame {
         buttonsPanel.add(addSelected);
         buttonsPanel.add(removeSelected);
         buttonsPanel.add(checkout);
+        //This code sets up the buttons panel in the GUI and assigns action listeners to each button for performing respective actions when clicked
     }
 
     // Build Cart Panel (containing JList/Scroll panel)
@@ -144,24 +149,25 @@ public class MangaStoreGUI extends JFrame {
         // Create cart list
         selectedList = new JList<>();
         // Set row visibility
-        selectedList.setVisibleRowCount(5);
+        selectedList.setVisibleRowCount(5); // it is set to 5, meaning that five rows will be visible without requiring scrolling.
         // Create scroll pane containing selected list items
-        scrollPane2 = new JScrollPane(selectedList);
-        scrollPane2.setPreferredSize(new Dimension(175, 50));
+        scrollPane2 = new JScrollPane(selectedList); //created to provide scrolling functionality to the selectedList JList.
+        scrollPane2.setPreferredSize(new Dimension(175, 50)); // it is set to a width of 175 pixels and a height of 50 pixels.
         // JLabel/Panel title
         cartTitle = new JLabel("Shopping Cart");
 
         // Add JLabel and scroll pane to panel
-        cartPanel.add(cartTitle, BorderLayout.NORTH);
-        cartPanel.add(scrollPane2);
+        cartPanel.add(cartTitle, BorderLayout.NORTH); //The cartTitle label is added to the cartPanel in the NORTH region of the BorderLayout.
+        cartPanel.add(scrollPane2); //The scrollPane2 is added to the cartPanel, which will be placed in the CENTER region of the BorderLayout.
+        //By building the cart panel in this way, the GUI will display the shopping cart with a title at the top and a scrollable list of selected items below it.
     }
 
     // Build banner panel (builds panel containing banner for GUI)
     public void buildBannerPanel() {
         // Create panel
-        bannerPanel = new JPanel();
+        bannerPanel = new JPanel(); //JPanel object named bannerPanel is created to hold the components of the banner panel.
         // Set Border Layout
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout()); //The layout manager of the bannerPanel is set to BorderLayout. This layout manager arranges components in five regions: NORTH, SOUTH, EAST, WEST, and CENTER.
         // String containing JLabel text
         String labelText = "<html><b><font color='gray'>Andrew's</font></b>" +
                 "<b><font color='#00CCFF'> Manga Paradise</font></b>";
@@ -178,14 +184,14 @@ public class MangaStoreGUI extends JFrame {
     // Build search button (builds panel containing search and show all buttons)
     public void buildSearchPanel() {
         // Create panel
-        searchPanel = new JPanel();
+        searchPanel = new JPanel(); //JPanel object named searchPanel is created to hold the components of the search panel.
         // Set Border Layout
-        searchPanel.setLayout(new GridLayout(1, 3, 5, 5));
+        searchPanel.setLayout(new GridLayout(1, 3, 5, 5)); //his layout manager arranges components in a grid with a specified number of rows and columns.
         // Create buttons
         searchButton = new JButton("Search");
-        showAllButton = new JButton("Show All");
+        showAllButton = new JButton("Show All"); //Create buttons: Two JButton objects, searchButton and showAllButton, are created with the labels "Search" and "Show All" respectively.
         // Create text file field
-        searchField = new JTextField(15);
+        searchField = new JTextField(15); //A JTextField object named searchField is created with a width of 15 columns.
         // Add listeners
         searchButton.addActionListener(new SearchButtonListener());
         showAllButton.addActionListener(new ShowAllButtonListener());
@@ -195,48 +201,55 @@ public class MangaStoreGUI extends JFrame {
         searchPanel.add(showAllButton, BorderLayout.EAST);
     }
 
-    // Add Button Listener (adds selected item to cart upon selection)
+    // Add Button Listener (adds selected item to cart upon selection) This listener is associated with the "Add to Cart" button and is triggered when the button is clicked.
     public class AddButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             selectedIndex = mangaList.getSelectedIndex();
-            selectedMangaTitle = mangaList.getSelectedValue();
+            selectedMangaTitle = mangaList.getSelectedValue(); //It retrieves the index and value of the selected item from the mangaList component. The mangaList is assumed to be a JList that contains a list of manga titles.
 
             manga = mangaList.getModel();
-            cart = selectedList.getModel();
+            cart = selectedList.getModel(); //These models are assumed to be instances of DefaultListModel.
 
-            DefaultListModel<String> shoppingCartDFM = new DefaultListModel<>();
+            DefaultListModel<String> shoppingCartDFM = new DefaultListModel<>(); //It creates a new DefaultListModel named shoppingCartDFM.
 
             for (int count = 0; count < cart.getSize(); count++) {
-                shoppingCartDFM.addElement((String) cart.getElementAt(count));
+                shoppingCartDFM.addElement((String) cart.getElementAt(count)); //It iterates over each element in the cart model (selectedList) and adds them to the shoppingCartDFM model.
             }
 
             if (element == -1) {
-                mangaPrice += mangaPrices[selectedIndex];
+                mangaPrice += mangaPrices[selectedIndex]; //It checks if the element variable is equal to -1. If it is, it means that no item is currently selected in the selectedList.
+                // it adds the price of the manga corresponding to the selected index from mangaPrices array to the mangaPrice variable.
             } else {
-                mangaPrice += mangaPrices[element];
+                mangaPrice += mangaPrices[element]; //Otherwise, it adds the price of the manga corresponding to the element index in the mangaPrices array.
             }
 
-            shoppingCartDFM.addElement(selectedMangaTitle);
-            selectedList.setModel(shoppingCartDFM);
+            shoppingCartDFM.addElement(selectedMangaTitle); //It adds the selected manga title to the shoppingCartDFM model.
+            selectedList.setModel(shoppingCartDFM); // it sets the shoppingCartDFM model as the model for the selectedList, effectively updating the contents of the shopping cart display.
         }
     }
 
     // Remove button listener (removes selected manga from cart)
     public class RemoveButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
+            // Retrieve the index of the selected item in the selectedList
             index = selectedList.getSelectedIndex();
             ((DefaultListModel<String>) selectedList.getModel()).remove(index);
-
+            // Check if the element variable is -1 (no item selected)
             if (element == -1) {
+                // If the mangaPrices[selectedIndex] is less than or equal to mangaPrice
                 if (mangaPrices[selectedIndex] <= mangaPrice)
+                    // Subtract the price of the manga from the mangaPrice
                     mangaPrice -= (mangaPrices[selectedIndex]);
                 else
+                    // Subtract mangaPrice from the price of the manga
                     mangaPrice = (mangaPrices[index]) - mangaPrice;
             } else
+                // If the mangaPrices[element] is less than or equal to mangaPrice
             if (mangaPrices[element] <= mangaPrice)
+                // Subtract the price of the manga from the mangaPrice
                 mangaPrice -= (mangaPrices[element]);
             else
+                // Subtract mangaPrice from the price of the manga
                 mangaPrice = (mangaPrices[index]) - mangaPrice;
         }
     }
@@ -244,38 +257,41 @@ public class MangaStoreGUI extends JFrame {
     // Checkout button listener
     private class CheckoutButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            // Create a DecimalFormat object to format the money values
             money = new DecimalFormat("#,##0.00");
+            // Calculate the total price including tax
             total = (mangaPrice + (mangaPrice*TAX));
-
+            // Display a message dialog with the subtotal, tax, and total
             JOptionPane.showMessageDialog(null, "Subtotal: $" + (money.format(mangaPrice)) + "\n" +
                     "Tax: $" + (money.format((mangaPrice*TAX))) + "\n" +
                     "Total: $" + (money.format(total)));
+            //The code uses JOptionPane to display a message dialog with the subtotal, tax, and total. The money.format() method is used to format the values with a specific number format.
         }
     }
 
     // Search button listener (in order to search manga)
     private class SearchButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            boolean found = false;
-            index = 0;
+            boolean found = false; // Flag to indicate if the manga is found
+            index = 0; // Index counter for searching
 
-            String searchInput = searchField.getText().trim();
+            String searchInput = searchField.getText().trim(); // Get the search input from the text field
 
             while (!found && index < mangaTitles.length) {
                 String[] parts = mangaTitles[index].split(",");
                 String title = parts[0].trim();
 
                 if (title.equalsIgnoreCase(searchInput)) {
-                    found = true;
-                    element = index;
+                    found = true; // Found the manga
+                    element = index; // Store the index of the found manga
                 }
                 index++;
             }
 
-            if (element == -1) {
+            if (element == -1) { // Manga not found
                 mangaList.setModel(new DefaultListModel<>());
                 ((DefaultListModel<String>) mangaList.getModel()).addElement(notFound);
-            } else {
+            } else { // Manga found
                 String[] parts = mangaTitles[element].split(",");
                 String title = parts[0].trim();
                 mangaList.setModel(new DefaultListModel<>());
@@ -286,16 +302,19 @@ public class MangaStoreGUI extends JFrame {
 
     private class ShowAllButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            boolean found = false;
-            index = 0;
-            element = -1;
-            mangaList.setModel(new DefaultListModel<>());
+            boolean found = false; // Flag to indicate if any manga is found
+            index = 0;  // Index counter for iterating through the mangaTitles array
+            element = -1; // Reset the stored element index
+            mangaList.setModel(new DefaultListModel<>()); // Clear the current manga list
+
 
             for (i = 0; i < mangaTitles.length; i++) {
                 String[] parts = mangaTitles[i].split(",");
                 String title = parts[0].trim();
 
-                ((DefaultListModel<String>) mangaList.getModel()).addElement(title);
+                ((DefaultListModel<String>) mangaList.getModel()).addElement(title); // Add each manga title to the list
+                //this listener does not perform any filtering or searching. It simply adds all manga titles to the list.
+                //It iterates through the mangaTitles array and adds each manga title to the manga list.
             }
         }
     }
@@ -304,6 +323,8 @@ public class MangaStoreGUI extends JFrame {
 
     // Main Method (creates instance of GUI class)
     public static void main(String[] args) throws IOException {
-        new MangaStoreGUI();
+        new MangaStoreGUI();  // Creates an instance of the MangaStoreGUI class, which in turn initializes and displays the Manga Store GUI.
+        //The new MangaStoreGUI() statement creates an object of the MangaStoreGUI class, invoking its constructor and initiating the GUI.
+        //throws IOException declaration in the method signature indicates that the constructor of MangaStoreGUI may throw an IOException, and it is handled or propagated accordingly.
     }
 }
