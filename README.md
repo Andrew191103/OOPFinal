@@ -14,13 +14,17 @@ Overall, the application “Andrew’s Manga Paradise” aims to provide manga e
 
 
 ## Screenshots
-![Menu](Menu.png)
+![1](1.png)
 
 
-![Starts](starts.png)
+![2](2.png)
 
 
-![Game Over](gameover.png)
+![3](3.png)
 
 
+![4](4.png)
+
+
+![5](5.png)
 
